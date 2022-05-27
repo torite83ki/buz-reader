@@ -286,7 +286,8 @@ AVRDUDE_PROGRAMMER = arduino
 #AVRDUDE_PORT = com1    # programmer connected to serial device
 #AVRDUDE_PORT = usb:200027253
 #AVRDUDE_PORT = /dev/tty.usbserial-A7043RIW
-AVRDUDE_PORT = /dev/tty.usbserial-A7043MRN
+#AVRDUDE_PORT = /dev/tty.usbserial-A7043MRN
+AVRDUDE_PORT = /dev/ttyUSB0
 
 AVRDUDE_WRITE_FLASH = -U flash:w:$(TARGET).hex
 #AVRDUDE_WRITE_EEPROM = -U eeprom:w:$(TARGET).eep
@@ -466,6 +467,10 @@ gccversion :
 # Program the device.  
 program: $(TARGET).hex $(TARGET).eep
 	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) $(AVRDUDE_WRITE_EEPROM)
+
+# Program the flash memory only.  
+program: $(TARGET).hex 
+	$(AVRDUDE) $(AVRDUDE_FLAGS) $(AVRDUDE_WRITE_FLASH) 
 
 # Check the signature of the device
 sig:

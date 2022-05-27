@@ -26,13 +26,14 @@
 	LED_PORT_DATA = 0xAA;		// set data
 	
 	// LED blink	
-	uint8_t n;
-	for(n = 0;n < 5;n++){
+//	uint8_t n;
+// 	for(n = 0;n < 5;n++){
+	for(;;){
 		LED_PORT_DATA = 0xAA;
 		_delay_ms(100);
 		_delay_ms(100);
 		_delay_ms(100);
-		LED_PORT_DATA = 0xCC;
+		LED_PORT_DATA = 0x55;
 		_delay_ms(100);
 	}
 #endif
